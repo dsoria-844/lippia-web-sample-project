@@ -26,8 +26,11 @@ public class TP4Service extends ActionManager {
         click(LOGIN_BUTTON_ID);
     }
 
-    public static void Tittle_Product (){
-        Assert.assertTrue(isVisible(TITTLE_ID));
+
+    public static void Tittle_Product (String titulo){
+        //Assert.assertTrue(isVisible(TITTLE_ID));
+        String Titulo_Obtenido = getText(TITTLE_ID);
+        Assert.assertEquals(Titulo_Obtenido, titulo, "El título mostrado no coincide.");
     }
 
     public static void alertUsuarioBloqueado (){
@@ -38,16 +41,24 @@ public class TP4Service extends ActionManager {
         click(ADD_TO_CAR_BTN_ID);
     }
 
-    public static void completarUserSegunOutline (String User_Outline){
-        setInput(INPUT_USER_ID, User_Outline);
+    public static void completarUserSegunInput (String User_Input){
+        setInput(INPUT_USER_ID, User_Input);
     }
 
-    public static void completarPassSegunOutline (String Pass_Outline){
-        setInput(INPUT_PASS_ID, Pass_Outline);
+    public static void completarPassSegunInput (String Pass_Input){
+        setInput(INPUT_PASS_ID, Pass_Input);
     }
 
-    public void REMOVE_PROD (){
+    public static void shoppingCarButton (){
+        click(SHOPPING_CART_ID);
+        Assert.assertTrue(isVisible(SHOPPING_CART_ID));
+    }
+    public static void REMOVE_PROD (){
         click(REMOVE_TO_CAR_ID);
+    }
+    public static void shoppingCarOnlyButton (){
+        click(SHOPPING_CART_ONLY_ID);
+        Assert.assertTrue(isVisible(SHOPPING_CART_ONLY_ID));
     }
 
 }

@@ -9,5 +9,9 @@ public class TP4Constants {
     public static final String ALERT_ID ="xpath://*[@id=\"login_button_container\"]/div/form/div[3]/h3";
     public static final String ADD_TO_CAR_BTN_ID ="id:add-to-cart-sauce-labs-backpack";
     public static final String REMOVE_TO_CAR_ID ="id:remove-sauce-labs-backpack";
+    //ID solo del icono del carrito
+    public static final String SHOPPING_CART_ID ="xpath://*[@id=\"shopping_cart_container\"]/a/span";
+    //ID del carrito solo
+    public static final String SHOPPING_CART_ONLY_ID ="xpath://*[@id=\"shopping_cart_container\"]/a";
 
 }
