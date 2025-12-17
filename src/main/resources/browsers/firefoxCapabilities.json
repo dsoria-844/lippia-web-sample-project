@@ -1,5 +1,8 @@
 {
 	"browserName": "firefox", 
 	"platform": "ANY",
-	"tz": "America/Argentina/Buenos_Aires"
+	"tz": "America/Argentina/Buenos_Aires",
+	"moz:firefoxOptions": {
+		"binary": "/Applications/Firefox.app/Contents/MacOS/firefox"
+	}
 } 
