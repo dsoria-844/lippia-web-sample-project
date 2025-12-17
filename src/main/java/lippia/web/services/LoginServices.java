@@ -11,12 +11,12 @@ import static com.crowdar.core.actions.WebActionManager.navigateTo;
 import com.crowdar.driver.DriverManager;
 
 import junit.framework.Assert;
-import static lippia.web.constants.P1yP2TPFConstants.BUTTON_LOGIN_ID;
-import static lippia.web.constants.P1yP2TPFConstants.INPUT_USER_ID;
-import static lippia.web.constants.P1yP2TPFConstants.PASS_USER_ID;
+import static lippia.web.constants.LoginConstants.BUTTON_LOGIN_ID;
+import static lippia.web.constants.LoginConstants.INPUT_USER_ID;
+import static lippia.web.constants.LoginConstants.PASS_USER_ID;
 
 
-public class P1yP2TPFServices {
+public class LoginServices {
     public static void navegarWeb(){
         navigateTo(PropertyManager.getProperty("web.base.url"));
     }
