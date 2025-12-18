@@ -11,6 +11,10 @@ import lippia.web.services.LoginServices;
 
 public class CompraSteps extends PageSteps {
 
+    // Variables para almacenar los nombres de los productos
+    private String producto1;
+    private String producto2;
+
 
     @Given("el usuario se encuentra logueado con user (.*) y pass (.*)$")
     public void elUsuarioSeEncuentraLogueadoConUserUsernameYPass(String userName, String secret_sauce) throws InterruptedException {
@@ -23,6 +27,10 @@ public class CompraSteps extends PageSteps {
 
     @And("^tiene agregado al carrito el producto (.*) y (.*)$")
     public void tieneAgregadoAlCarritoElProductoY(String arg0, String arg1) {
+        // Guardar los nombres de los productos
+        this.producto1 = arg0;
+        this.producto2 = arg1;
+        
         CompraServices.add_Product_1();
         CompraServices.add_Product_2();
     }
@@ -54,7 +62,9 @@ public class CompraSteps extends PageSteps {
 
     @Then("visualiza la página de Overview con los productos agregados al carrito")
     public void visualizaLaPáginaDeOverviewConLosProductosAgregadosAlCarrito() throws InterruptedException {
-        CompraServices.verify_Overview("Checkout: Overview");  //VERIFICO EL TITULO
+        // Verifico el título y los productos en el Overview
+        CompraServices.verify_Overview("Checkout: Overview", producto1, producto2);
+        
         Thread.sleep(2000); // Pausa de 2 segundos
     }
 
@@ -66,6 +76,7 @@ public class CompraSteps extends PageSteps {
 
     @Then("^visualiza la página de confirmación de la compra con el mensaje (.*)$")
     public void visualizaLaPáginaDeConfirmaciónDeLaCompraConElMensaje(String arg0) throws InterruptedException {
+        CompraServices.verify_finish_Checkout();
         Thread.sleep(2000); // Pausa de 2 segundos
     }
 

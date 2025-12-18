@@ -3,7 +3,7 @@ Feature: Compra de productos
   @Smoke @CompraExitosa
   Scenario Outline: Compra exitosa
     Given el usuario se encuentra logueado con user <username> y pass secret_sauce
-    And tiene agregado al carrito el producto "Sauce Labs Backpack" y "Sauce Labs Bike Light"
+    And tiene agregado al carrito el producto Sauce Labs Backpack y Sauce Labs Bike Light
     When hace click en el icono del carrito
     And hace click en el boton Checkout
     And completa los datos personales con Nombre <nombre>, Apellido <apellido> y Código Postal <codigoPostal>
@@ -14,5 +14,4 @@ Feature: Compra de productos
 
     Examples:
       | username      | producto1           | producto2             | nombre | apellido | codigoPostal |
-      | standard_user | Sauce Labs Backpack | Sauce Labs Bike Light | Juan   | Pérez    |        12345 |
-      #| performance_glitch_user | Sauce Labs Bolt T-Shirt | Sauce Labs Fleece Jacket | María    | Gómez    | 67890        |
+      | standard_user | Sauce Labs Backpack | Sauce Labs Bike Light | Diego  | Soria    | 4400         |
