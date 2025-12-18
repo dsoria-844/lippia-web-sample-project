@@ -13,11 +13,12 @@ public class CompraSteps extends PageSteps {
 
 
     @Given("el usuario se encuentra logueado con user (.*) y pass (.*)$")
-    public void elUsuarioSeEncuentraLogueadoConUserUsernameYPass(String userName, String secret_sauce) {
+    public void elUsuarioSeEncuentraLogueadoConUserUsernameYPass(String userName, String secret_sauce) throws InterruptedException {
         LoginServices.navegarWeb();
         LoginServices.inputEmail(userName);
         LoginServices.inputPass(secret_sauce);
         LoginServices.button_Login();
+        Thread.sleep(2000); // Pausa de 2 segundos
     }
 
     @And("^tiene agregado al carrito el producto (.*) y (.*)$")
@@ -27,8 +28,9 @@ public class CompraSteps extends PageSteps {
     }
 
     @When("hace click en el icono del carrito")
-    public void haceClickEnElIconoDelCarrito() {
+    public void haceClickEnElIconoDelCarrito() throws InterruptedException {
         CompraServices.cart_Button();
+        Thread.sleep(2000); // Pausa de 2 segundos
 
     }
 
@@ -38,10 +40,11 @@ public class CompraSteps extends PageSteps {
     }
 
     @And("^completa los datos personales con Nombre (.*), Apellido (.*) y Código Postal (.*)$")
-    public void completaLosDatosPersonalesConNombreNombreApellidoApellidoYCódigoPostalCodigoPostal(String nombre, String Apellido, String codigoPostal) {
+    public void completaLosDatosPersonalesConNombreNombreApellidoApellidoYCódigoPostalCodigoPostal(String nombre, String Apellido, String codigoPostal) throws InterruptedException {
         CompraServices.checkout_FirstName(nombre);
         CompraServices.checkout_LastName(Apellido);
         CompraServices.checkout_CodigoPostal(codigoPostal);
+        Thread.sleep(2000); // Pausa de 2 segundos
     }
 
     @And("hace click en el boton Continue")
@@ -50,9 +53,9 @@ public class CompraSteps extends PageSteps {
     }
 
     @Then("visualiza la página de Overview con los productos agregados al carrito")
-    public void visualizaLaPáginaDeOverviewConLosProductosAgregadosAlCarrito() {
+    public void visualizaLaPáginaDeOverviewConLosProductosAgregadosAlCarrito() throws InterruptedException {
         CompraServices.verify_Overview("Checkout: Overview");  //VERIFICO EL TITULO
-
+        Thread.sleep(2000); // Pausa de 2 segundos
     }
 
 
@@ -62,8 +65,8 @@ public class CompraSteps extends PageSteps {
     }
 
     @Then("^visualiza la página de confirmación de la compra con el mensaje (.*)$")
-    public void visualizaLaPáginaDeConfirmaciónDeLaCompraConElMensaje(String arg0) {
-
+    public void visualizaLaPáginaDeConfirmaciónDeLaCompraConElMensaje(String arg0) throws InterruptedException {
+        Thread.sleep(2000); // Pausa de 2 segundos
     }
 
 
