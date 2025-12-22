@@ -6,8 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lippia.web.services.CompraServices;
-import lippia.web.services.LoginServices;
+import lippia.web.services.*;
 
 public class CompraSteps extends PageSteps {
 
@@ -21,8 +20,8 @@ public class CompraSteps extends PageSteps {
         LoginServices.navegarWeb();
         LoginServices.inputEmail(userName);
         LoginServices.inputPass(secret_sauce);
+        Thread.sleep(2000);
         LoginServices.button_Login();
-        Thread.sleep(2000); // Pausa de 2 segundos
     }
 
     @And("^tiene agregado al carrito el producto (.*) y (.*)$")
@@ -38,46 +37,45 @@ public class CompraSteps extends PageSteps {
     @When("hace click en el icono del carrito")
     public void haceClickEnElIconoDelCarrito() throws InterruptedException {
         CompraServices.cart_Button();
-        Thread.sleep(2000); // Pausa de 2 segundos
+        Thread.sleep(2000); 
 
     }
 
     @And("hace click en el boton Checkout")
     public void haceClickEnElBotonCheckout()  {
-        CompraServices.checkout_Button();
+        YourCartServices.checkout_Button();
     }
 
     @And("^completa los datos personales con Nombre (.*), Apellido (.*) y Código Postal (.*)$")
     public void completaLosDatosPersonalesConNombreNombreApellidoApellidoYCódigoPostalCodigoPostal(String nombre, String Apellido, String codigoPostal) throws InterruptedException {
-        CompraServices.checkout_FirstName(nombre);
-        CompraServices.checkout_LastName(Apellido);
-        CompraServices.checkout_CodigoPostal(codigoPostal);
-        Thread.sleep(2000); // Pausa de 2 segundos
+        CheckoutYourInformationServices.checkout_FirstName(nombre);
+        CheckoutYourInformationServices.checkout_LastName(Apellido);
+        CheckoutYourInformationServices.checkout_CodigoPostal(codigoPostal);
+        Thread.sleep(2000); 
     }
 
     @And("hace click en el boton Continue")
     public void haceClickEnElBotonContinueCheckout()  {
-        CompraServices.checkout_Continue_Button();
+        CheckoutYourInformationServices.checkout_Continue_Button();
     }
 
     @Then("visualiza la página de Overview con los productos agregados al carrito")
     public void visualizaLaPáginaDeOverviewConLosProductosAgregadosAlCarrito() throws InterruptedException {
         // Verifico el título y los productos en el Overview
-        CompraServices.verify_Overview("Checkout: Overview", producto1, producto2);
-        
-        Thread.sleep(2000); // Pausa de 2 segundos
+        OverviewServices.verify_Overview("Checkout: Overview", producto1, producto2);
+        Thread.sleep(2000); 
     }
 
 
     @And("hace click en el boton Finish")
     public void haceClickEnElBotonFinishCheckout()  {
-        CompraServices.finish_Checkout();
+        OverviewServices.finish_Checkout();
     }
 
     @Then("^visualiza la página de confirmación de la compra con el mensaje (.*)$")
     public void visualizaLaPáginaDeConfirmaciónDeLaCompraConElMensaje(String arg0) throws InterruptedException {
-        CompraServices.verify_finish_Checkout();
-        Thread.sleep(2000); // Pausa de 2 segundos
+        OverviewServices.verify_finish_Checkout();
+        Thread.sleep(2000); 
     }
 
 

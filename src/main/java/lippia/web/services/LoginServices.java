@@ -33,6 +33,7 @@ public class LoginServices {
         click(BUTTON_LOGIN_ID);
     }
 
+
     public static void verify_Title(String title){
         WebElement element = DriverManager.getDriverInstance().findElement(org.openqa.selenium.By.className("title"));
         Assert.assertEquals(title, element.getText());
@@ -42,4 +43,5 @@ public class LoginServices {
         WebElement element = DriverManager.getDriverInstance().findElement(org.openqa.selenium.By.cssSelector(".error-message-container.error"));
         Assert.assertEquals(alert, element.getText());
     }
+
 }
